@@ -1,0 +1,586 @@
+; Copyright 2024 University of Groningen
+;
+; Licensed under the Apache License, Version 2.0 (the "License");
+; you may not use this file except in compliance with the License.
+; You may obtain a copy of the License at
+;
+;    http://www.apache.org/licenses/LICENSE-2.0
+;
+; Unless required by applicable law or agreed to in writing, software
+; distributed under the License is distributed on an "AS IS" BASIS,
+; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+; See the License for the specific language governing permissions and
+; limitations under the License.
+
+[ macros ]
+nucleic_resnames "RA|RC|RG|RU"
+rna_resnames "RA|RC|RG|RU|RA5|RA3|RC5|RC3|RG5|RG3|RU5|RU3"
+
+;;;; RNA
+
+;;; ADENINE 
+
+[ moleculetype ]
+; molname       nrexcl
+RA                 1			
+
+[ atoms ]
+;id type resnr residu atom   cgnr   charge weight
+ 1   Q5   1    RA     BB     1     -1.0    72
+ 2   SN6   1    RA     BB1    2      0    45
+ 3   TP1   1    RA     BB2    3      0    45
+ 4   SN4ar 1    RA     BB3    4      0    45
+ 5   TC4   1    RA     BVS    5      0     0
+ 6   TN5h  1    RA     SC1    6      0    26 
+ 7   TN5ah 1    RA     SC2    7      0    41 
+ 8   TP1a  1    RA     SC3    8      0     0 
+ 9   TP2d  1    RA     SC4    9      0     0
+ 10  TC5eh 1    RA     SC5   10      0    40 
+ 11  TN5ah 1    RA     SC6   11      0    27  
+ 12  TC4h  1    RA     SC7   12      0     0  
+
+[bonds]
+;  i     j   funct   length  force.c.
+#meta {"group": "Backbone bonds"}
+   BB    BB3  1       0.308    11000        {"comment": "BB_BB3"} 
+#meta {"group": "Side chain bonds"}
+   BB1   SC1  1       0.274    10000        {"comment": "BB1_SC1"}     
+
+[constraints]
+   BB1   BB2    1       0.26600
+   BB2   BB3    1       0.26700
+   BB3   BB1    1       0.35800
+   SC1   SC2    1       0.28700
+   SC1   SC6    1       0.19500
+   SC5   SC6    1       0.28700
+   SC2   SC6    1       0.45800
+   SC2   SC5    1       0.26800
+
+[angles]
+;  i     j    k     funct   angle  force.c.
+#meta {"group": "Backbone angles"}
+   BB   BB3  BB2       10      65.0     200  {"comment": "BB_BB3_BB2"}  
+#meta {"group": "Side chain angles"}
+   BVS  BB1  SC1       10     110       175  {"comment": "BVS_BB1_SC1"}
+;
+   BB1  SC1  SC2       10     130.0     300  {"comment": "BB1_SC1_SC2"}
+   BB1  SC1  SC6       10      88.0     350  {"comment": "BB1_SC1_SC6"}
+
+[ dihedrals ]
+;  i     j    k    l   funct   angle  force.c.
+    BVS  BB1  SC1  SC2     10   -105.0    15   {"comment": "BVS_BB1_SC1_SC2"}
+    BVS  BB1  SC1  SC6     10     90.0    30   {"comment": "BVS_BB1_SC1_SC6"}
+
+; #meta {"group": "Side chain dihedrals"}  
+   SC1  SC2  SC6  SC5     2  180.0  100.0 {"comment": "SC1_SC2_SC5_SC4"}
+ 
+
+[virtual_sites3]
+;  VS beads 3fad
+; Site  from       funct     angle    a
+   SC3 SC2 SC1 SC5 -- 3      88.5   0.138  
+   SC4 SC2 SC6 SC5 -- 3      50.0   0.389
+
+[virtual_sitesn]
+;  VS beads in the centre of the mass
+; site funct  constructing atom indices
+   BVS BB1 BB2 BB3 -- 2 
+   SC7 SC2 SC6     -- 1 
+
+[exclusions]
+   BB3 BB1 BB2 SC1 SC6
+   BB2 BB1 SC1 SC6
+   BB3 BB  SC1 SC6
+   BB1 SC1 SC6 SC7
+   BVS BB1 BB2 BB3 
+   SC7 SC1 SC2 SC3 SC4 SC5 SC6
+   SC6 SC1 SC2 SC3 SC4 SC5
+   SC5 SC1 SC2 SC3 SC4
+   SC4 SC1 SC2 SC3
+   SC3 SC1 SC2 
+   SC2 SC1
+
+
+
+;;; 5'-ADENINE
+
+[ moleculetype ]
+; molname       nrexcl
+RA5                1
+
+[ atoms ]
+;id type resnr residu atom  cgnr  charge weight
+ 1   SN6   1    RA5    BB1    1      0    45
+ 2   TP1   1    RA5    BB2    2      0    45
+ 3   SP1r  1    RA5    BB3    3      0    45
+ 4   TC4   1    RA5    BVS    4      0     0
+ 5   TN5h  1    RA5    SC1    5      0    26
+ 6   TN5ah 1    RA5    SC2    6      0    41
+ 7   TP1a  1    RA5    SC3    7      0     0
+ 8   TP2d  1    RA5    SC4    8      0     0
+ 9   TC5eh 1    RA5    SC5    9      0    40
+ 10  TN5ah 1    RA5    SC6   10      0    27
+ 11  TC4h  1    RA5    SC7   11      0     0
+
+[bonds]
+;  i     j   funct   length  force.c.
+#meta {"group": "Backbone bonds"}
+   BB1   SC1    2     0.2740   10000     {"comment": "BB1_SC1"}
+
+[constraints]
+   BB1   BB2    1       0.26600
+   BB2   BB3    1       0.26700
+   BB3   BB1    1       0.35800
+   SC1   SC2    1       0.28700
+   SC1   SC6    1       0.19500
+   SC5   SC6    1       0.28700
+   SC2   SC6    1       0.45800
+   SC2   SC5    1       0.26800
+
+[angles]
+;  i     j    k     funct   angle  force.c.
+#meta {"group": "Side chain angles"}
+   BVS  BB1  SC1      10     110.0      175    {"comment": "BVS_BB1_SC1"}
+;    
+   BB1  SC1  SC2      10     130.0      300     {"comment": "BB1_SC1_SC2"}
+   BB1  SC1  SC6      10      88.0      325     {"comment": "BB1_SC1_SC6"}
+
+[ dihedrals ]
+;  i     j    k    l   funct   angle  force.c.
+    BVS  BB1  SC1  SC2     10   -105.0    15   {"comment": "BVS_BB1_SC1_SC2"}
+    BVS  BB1  SC1  SC6     10     90.0    30   {"comment": "BVS_BB1_SC1_SC6"}
+
+    SC1  SC2  SC6  SC5     2    180.0   100.0   {"comment": "SC1_SC2_SC5_SC4"}
+
+
+[virtual_sites3]
+;  VS beads 3fad
+; Site  from       funct     angle    a
+   SC3 SC2 SC1 SC5 -- 3      88.5   0.138
+   SC4 SC2 SC6 SC5 -- 3      50.0   0.389  
+
+[virtual_sitesn]
+;  VS beads in the centre of the mass
+; site funct  constructing atom indices
+   BVS BB1 BB2 BB3 -- 2
+   SC7 SC6 SC2 -- 1 
+     
+[exclusions]
+   BB3 BB1 BB2 SC1 SC6
+   BB1 BB2 SC1 SC6
+   BVS BB1 BB2 BB3 SC1 SC6
+   BB1 SC1 SC6 SC7
+   SC7 SC1 SC2 SC3 SC4 SC5 SC6
+   SC6 SC1 SC2 SC3 SC4 SC5
+   SC5 SC1 SC2 SC3 SC4
+   SC4 SC1 SC2 SC3
+   SC3 SC1 SC2 
+   SC2 SC1 
+
+;;; 3'-ADENINE 
+
+[ moleculetype ]
+; molname       nrexcl
+RA3                1			
+
+[ atoms ]
+;id type resnr residu atom cgnr   charge weight
+ 1   Q5   1    RA3    BB    1     -1.0   72
+ 2   SN6   1    RA3    BB1   2      0    45
+ 3   TP1   1    RA3    BB2   3      0    45
+ 4   SN4ar 1    RA3    BB3   4      0    45
+ 5   TC4   1    RA3    BVS   5      0     0
+ 6   TN5h  1    RA3    SC1   6      0    26 
+ 7   TN5ah 1    RA3    SC2   7      0    41 
+ 8   TP2a  1    RA3    SC3   8      0     0 
+ 9   TP2d  1    RA3    SC4   9      0     0 
+ 10  TC5eh 1    RA3    SC5  10      0    40 
+ 11  TN5ah 1    RA3    SC6  11      0    27  
+ 12  TC4h  1    RA3    SC7  12      0     0
+ 
+[bonds]
+;  i     j   funct   length  force.c.
+#meta {"group": "Backbone bonds"}
+   BB    BB3  1      0.308    11000      {"comment": "BB_BB3"}
+#meta {"group": "Side chain bonds"}
+   BB1   SC1  1      0.274    10000      {"comment": "BB1_SC1"} 
+
+[constraints]
+   BB1   BB2    1       0.26600    
+   BB2   BB3    1       0.26700
+   BB3   BB1    1       0.35800
+   SC1   SC2    1       0.28700
+   SC1   SC6    1       0.19500
+   SC5   SC6    1       0.28700
+   SC2   SC6    1       0.45800
+   SC2   SC5    1       0.26800
+
+[angles]
+;  i     j    k     funct   angle  force.c.
+#meta {"group": "Backbone angles"}
+   BB   BB3  BB2     10        65.0    200 {"comment": "BB_BB3_BB2"} 
+
+#meta {"group": "Side chain angles"}
+   BVS  BB1  SC1     10       110.0    175   {"comment": "BVS_BB1_SC1"}
+;
+   BB1  SC1  SC2     10      130.0     300    {"comment": "BB1_SC1_SC2"}
+   BB1  SC1  SC6     10       88.0     325    {"comment": "BB1_SC1_SC6"} 	
+
+[ dihedrals ]
+;  i     j    k    l   funct   angle  force.c.
+; #meta {"group": "Side chain dihedrals"}
+   BVS  BB1  SC1  SC2     10   -105.0    15   {"comment": "BVS_BB1_SC1_SC2"}
+   BVS  BB1  SC1  SC6     10     90.0    30   {"comment": "BVS_BB1_SC1_SC6"}
+
+   SC1  SC2  SC6  SC5   2       180.0    100.0   {"comment": "SC1_SC2_SC5_SC4"}
+
+
+
+[virtual_sites3]
+;  VS beads 3fad
+; Site  from       funct     angle    a
+   SC3 SC2 SC1 SC5 -- 3      88.5   0.138
+   SC4 SC2 SC6 SC5 -- 3      50.0   0.389
+
+[virtual_sitesn]
+;  VS beads in the centre of the mass
+; site funct  constructing atom indices
+   BVS BB1 BB2 BB3 -- 2
+   SC7 SC6 SC2 -- 1
+ 
+[exclusions]
+   BB BB3
+   BB3 SC1 SC6
+   BB3 BB1 BB2 SC1 SC6
+   BB2 BB1 SC1 SC6
+   BB1 SC1 SC6 SC7
+   BVS BB1 BB2 BB3
+   SC7 SC1 SC2 SC3 SC4 SC5 SC6
+   SC6 SC1 SC2 SC3 SC4 SC5
+   SC5 SC1 SC2 SC3 SC4
+   SC4 SC1 SC2 SC3
+   SC3 SC1 SC2 
+   SC2 SC1 
+
+;;; GUANINE 
+
+[ moleculetype ]
+; molname       nrexcl
+RG                 1			
+
+[ atoms ]
+;id type resnr residu atom   cgnr   charge weight
+ 1   Q5   1    RG     BB     1     -1.0    72
+ 2   SN6   1    RG     BB1    2      0    45
+ 3   TP1   1    RG     BB2    3      0    45
+ 4   SN4ar 1    RG     BB3    4      0    45
+ 5   TC4   1    RG     BVS    5      0     0
+;
+ 6   TN4   1    RG     SC1    6      0    26 
+ 7   TP1d  1    RG     SC2    7      0     0 
+ 8   TN6d  1    RG     SC3    8      0     0 
+ 9   TP1a  1    RG     SC4    9      0     0
+ 10  TN4a  1    RG     SC5   10      0    49 
+ 11  TC5e  1    RG     SC6   11      0    48  
+ 12  TN4a  1    RG     SC7   12      0    27   
+
+[bonds]
+;  i     j   funct   length  force.c.
+#meta {"group": "Backbone bonds"}
+   BB    BB3  1       0.308    11000        {"comment": "BB_BB3"} 
+#meta {"group": "Side chain bonds"}
+   BB1   SC1  1       0.274    10000        {"comment": "BB1_SC1"}     
+
+[constraints]
+   BB1   BB2    1       0.26600
+   BB2   BB3    1       0.26700
+   BB3   BB1    1       0.35800
+;
+   SC1   SC5    1       0.23500
+   SC1   SC7    1       0.19500
+   SC6   SC7    1       0.28700
+   SC5   SC7    1       0.41000
+   SC5   SC6    1       0.24300
+
+[angles]
+;  i     j    k     funct   angle  force.c.
+#meta {"group": "Backbone angles"}
+   BB   BB3  BB2       10      65.0     200  {"comment": "BB_BB3_BB2"}  
+#meta {"group": "Side chain angles"}
+   BVS  BB1  SC1       10     110       175  {"comment": "BVS_BB1_SC1"}
+;
+   BB1  SC1  SC5       10     130.0     300  {"comment": "BB1_SC1_SC5"}
+   BB1  SC1  SC7       10      88.0     350  {"comment": "BB1_SC1_SC7"}
+
+[ dihedrals ]
+;  i     j    k    l   funct   angle  force.c.
+    BVS  BB1  SC1  SC5     10   -105.0    15   {"comment": "BVS_BB1_SC1_SC5"}
+    BVS  BB1  SC1  SC7     10     90.0    30   {"comment": "BVS_BB1_SC1_SC7"}
+
+; #meta {"group": "Side chain dihedrals"}  
+   SC1  SC5  SC7  SC6     2  180.0  100.0 {"comment": "SC1_SC2_SC7_SC6"}
+ 
+
+[virtual_sites3]
+;  VS beads 3fad
+; Site  from       funct     angle    a
+   SC2 SC6 SC7 SC5 -- 3      118.0   0.350  
+   SC4 SC5 SC7 SC6 -- 3       55.0   0.340
+
+[virtual_sitesn]
+;  VS beads in the centre of the mass
+; site funct  constructing atom indices
+   BVS BB1 BB2 BB3 -- 2 
+   SC3 SC2 SC4     -- 1 
+
+[exclusions]
+   BB3 BB1 BB2 SC1 SC7
+   BB2 BB1 SC1 SC7
+   BB3 BB  SC1 SC7
+   BB1 SC1 SC7 
+   BVS BB1 BB2 BB3 
+   SC7 SC1 SC2 SC3 SC4 SC5 SC6
+   SC6 SC1 SC2 SC3 SC4 SC5
+   SC5 SC1 SC2 SC3 SC4
+   SC4 SC1 SC2 SC3
+   SC3 SC1 SC2 
+   SC2 SC1
+
+
+
+;;; 5'-GUANINE
+
+[ moleculetype ]
+; molname       nrexcl
+RG5                1
+
+[ atoms ]
+;id type resnr residu atom  cgnr  charge weight
+ 1   SN6   1    RG5    BB1    1      0    45
+ 2   TP1   1    RG5    BB2    2      0    45
+ 3   SP1r  1    RG5    BB3    3      0    45
+ 4   TC4   1    RG5    BVS    4      0     0
+;
+ 5   TN4   1    RG5    SC1    5      0    26 
+ 6   TP1d  1    RG5    SC2    6      0     0 
+ 7   TN6d  1    RG5    SC3    7      0     0 
+ 8   TP1a  1    RG5    SC4    8      0     0
+ 9   TN4a  1    RG5    SC5    9      0    49 
+ 10  TC5e  1    RG5    SC6   10      0    48  
+ 11  TN4a  1    RG5    SC7   11      0    27  
+
+[bonds]
+;  i     j   funct   length  force.c.
+#meta {"group": "Backbone bonds"}
+   BB1   SC1    2     0.2740   10000     {"comment": "BB1_SC1"}
+
+[constraints]
+   BB1   BB2    1       0.26600
+   BB2   BB3    1       0.26700
+   BB3   BB1    1       0.35800
+;
+   SC1   SC5    1       0.23500
+   SC1   SC7    1       0.19500
+   SC6   SC7    1       0.28700
+   SC5   SC7    1       0.41000
+   SC5   SC6    1       0.24300
+
+[angles]
+;  i     j    k     funct   angle  force.c.
+#meta {"group": "Side chain angles"}
+   BVS  BB1  SC1      10     110.0      175    {"comment": "BVS_BB1_SC1"}
+;    
+   BB1  SC1  SC5      10     130.0      300     {"comment": "BB1_SC1_SC5"}
+   BB1  SC1  SC7      10      88.0      325     {"comment": "BB1_SC1_SC7"}
+
+[ dihedrals ]
+;  i     j    k    l   funct   angle  force.c.
+    BVS  BB1  SC1  SC5     10   -105.0    15   {"comment": "BVS_BB1_SC1_SC5"}
+    BVS  BB1  SC1  SC7     10     90.0    30   {"comment": "BVS_BB1_SC1_SC7"}
+
+    SC1  SC5  SC7  SC6     2    180.0   100.0   {"comment": "SC1_SC2_SC7_SC6"}
+
+
+[virtual_sites3]
+;  VS beads 3fad
+; Site  from       funct     angle    a
+   SC2 SC6 SC7 SC5 -- 3      118.0   0.350  
+   SC4 SC5 SC7 SC6 -- 3       55.0   0.340
+
+[virtual_sitesn]
+;  VS beads in the centre of the mass
+; site funct  constructing atom indices
+   BVS BB1 BB2 BB3 -- 2 
+   SC3 SC2 SC4     -- 1 
+
+[exclusions]
+   BB3 BB1 BB2 SC1 SC7
+   BB2 BB1 SC1 SC7
+   BB3 SC1 SC7
+   BB1 SC1 SC7 
+   BVS BB1 BB2 BB3 
+   SC7 SC1 SC2 SC3 SC4 SC5 SC6
+   SC6 SC1 SC2 SC3 SC4 SC5
+   SC5 SC1 SC2 SC3 SC4
+   SC4 SC1 SC2 SC3
+   SC3 SC1 SC2 
+   SC2 SC1
+
+;;; 3'-GUANINE 
+
+[ moleculetype ]
+; molname       nrexcl
+RG3                1			
+
+[ atoms ]
+;id type resnr residu atom cgnr   charge weight
+ 1   Q5   1    RG3    BB    1     -1.0   72
+ 2   SN6   1    RG3    BB1   2      0    45
+ 3   TP1   1    RG3    BB2   3      0    45
+ 4   SN4ar 1    RG3    BB3   4      0    45
+ 5   TC4   1    RG3    BVS   5      0     0
+;
+ 6   TN4   1    RG3    SC1    6      0    26 
+ 7   TP1d  1    RG3    SC2    7      0     0 
+ 8   TN6d  1    RG3    SC3    8      0     0 
+ 9   TP1a  1    RG3    SC4    9      0     0
+ 10  TN4a  1    RG3    SC5   10      0    49 
+ 11  TC5e  1    RG3    SC6   11      0    48  
+ 12  TN4a  1    RG3    SC7   12      0    27   
+ 
+[bonds]
+;  i     j   funct   length  force.c.
+#meta {"group": "Backbone bonds"}
+   BB    BB3  1      0.308    11000      {"comment": "BB_BB3"}
+#meta {"group": "Side chain bonds"}
+   BB1   SC1  1      0.274    10000      {"comment": "BB1_SC1"} 
+
+[constraints]
+   BB1   BB2    1       0.26600    
+   BB2   BB3    1       0.26700
+   BB3   BB1    1       0.35800
+;
+   SC1   SC5    1       0.23500
+   SC1   SC7    1       0.19500
+   SC6   SC7    1       0.28700
+   SC5   SC7    1       0.41000
+   SC5   SC6    1       0.24300
+
+[angles]
+;  i     j    k     funct   angle  force.c.
+#meta {"group": "Backbone angles"}
+   BB   BB3  BB2     10        65.0    200 {"comment": "BB_BB3_BB2"} 
+
+#meta {"group": "Side chain angles"}
+   BVS  BB1  SC1     10       110.0    175   {"comment": "BVS_BB1_SC1"}
+;
+   BB1  SC1  SC5     10      130.0     300    {"comment": "BB1_SC1_SC5"}
+   BB1  SC1  SC7     10       88.0     325    {"comment": "BB1_SC1_SC7"} 	
+
+[ dihedrals ]
+;  i     j    k    l   funct   angle  force.c.
+; #meta {"group": "Side chain dihedrals"}
+   BVS  BB1  SC1  SC5     10   -105.0    15   {"comment": "BVS_BB1_SC1_SC5"}
+   BVS  BB1  SC1  SC7     10     90.0    30   {"comment": "BVS_BB1_SC1_SC7"}
+
+   SC1  SC5  SC7  SC6   2       180.0    100.0   {"comment": "SC1_SC2_SC7_SC6"}
+
+
+[virtual_sites3]
+;  VS beads 3fad
+; Site  from       funct     angle    a
+   SC2 SC6 SC7 SC5 -- 3      118.0   0.350  
+   SC4 SC5 SC7 SC6 -- 3       55.0   0.340
+
+[virtual_sitesn]
+;  VS beads in the centre of the mass
+; site funct  constructing atom indices
+   BVS BB1 BB2 BB3 -- 2 
+   SC3 SC2 SC4     -- 1 
+
+[exclusions]
+   BB3 BB1 BB2 SC1 SC7
+   BB2 BB1 SC1 SC7
+   BB3 BB  SC1 SC7
+   BB1 SC1 SC7 
+   BVS BB1 BB2 BB3 
+   SC7 SC1 SC2 SC3 SC4 SC5 SC6
+   SC6 SC1 SC2 SC3 SC4 SC5
+   SC5 SC1 SC2 SC3 SC4
+   SC4 SC1 SC2 SC3
+   SC3 SC1 SC2 
+   SC2 SC1
+
+;;; Links
+
+;; Links for COIL. We apply them first as coil is the default.
+[ link ]
+resname $rna_resnames
+[ bonds ]
+BB2 +BB  1 0.270 11000  {"group": "Backbone bonds", "comment": "BB2_BB"}
+
+[link]
+resname $rna_resnames
+[ edges ]
+BB2 +BB
+[exclusions]
+BB2 +BB
+
+; Backbone angles.
+[ link ]
+resname $rna_resnames
+[angles]
+BB3  BB2 +BB   10 135 260 {"group": "Backbone angles", "comment": "BB3_BB2_BB"}
+BB2 +BB  +BB3  10 105 280 {"group": "Backbone angles", "comment": "BB2_BB_BB3"} 
+
+
+;; Backbone dihedrals.
+[ link ]
+resname $rna_resnames
+[ dihedrals ]
+BB   BB3  BB2 +BB     2     180     150           {"comment": "BB_BB3_BB2_BB"}
+;
+BB3  BB2 +BB  +BB3    10     55      65            {"comment": "BB3_BB2_BB_BB3"}
+
+BB2 +BB  +BB3 +BB2    10    135     110           {"comment": "BB2_BB_BB3_BB2"}
+
+
+;; Nucleic Acid termini. These links should be applied last.
+[ link ]
+[ molmeta ]
+neutral_termini not(true)
+[ features ]
+neutral_termini
+[ atoms ]
+BB {"replace": {"atype": "Q5", "charge": -1}}
+[ non-edges ]
+BB -BB
+
+[ link ]
+[ molmeta ]
+neutral_termini not(true)
+[ atoms ]
+BB {"replace": {"atype": "Q5", "charge": -1}}
+[ non-edges ]
+BB +BB
+
+[ link ]
+[ molmeta ]
+neutral_termini true
+[ atoms ]
+BB {"replace": {"atype": "P6"}}
+[ non-edges ]
+BB -BB
+
+[ link ]
+[ molmeta ]
+neutral_termini true
+[ features ]
+neutral_termini
+[ atoms ]
+BB {"replace": {"atype": "P6"}}
+[ non-edges ]
+BB +BB
+
+
+	
