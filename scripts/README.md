@@ -26,7 +26,7 @@ Jupyter notebook scripts for data analysis and visualization, organized by manus
 - Matplotlib
 - SciPy
 
-#### 3. Setup:
+### 3. Setup:
 ```bash
 # Clone repository
 git clone https://github.com/Qinzhang69/RNA-Phase-Separation-Martini-CG.git
@@ -36,7 +36,7 @@ cd RNA-Phase-Separation-Martini-CG/
 pip install mdanalysis numpy matplotlib scipy
 ```
 
-#### 4. Execute Analysis Notebooks
+### 4. Execute Analysis Notebooks
 cd scripts/
 jupyter-lab  # or jupyter-notebook
 
