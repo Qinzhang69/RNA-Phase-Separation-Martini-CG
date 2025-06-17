@@ -52,6 +52,7 @@ jupyter-lab  # or jupyter-notebook
   
   Critical Step: Update path variables in each notebook to match your local data directory.
   Example modification (typically near notebook start):
+  
     # BEFORE
     traj_path = "/media/qzhang04/3xG4C2/zenodo/A_3xG4C2_800uM_12_Na_neutral/lake_10us/"
     
