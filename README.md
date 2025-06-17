@@ -5,14 +5,14 @@ This repository contains simulation protocols and analysis scripts for the study
 ## Repository Structure
 ```
 RNA-Phase-Separation-Martini-CG/
-├── System_Building_Strategy/ # Initial system construction protocols
-│ ├── 3xG4C2_12_17mMMaCl_10mMMgCl2_30mm/ # Sample system building case
-│ └── TPRs_3xG4C2_system/ # All tpr files for all 3xG4C2 salt conditions
-├── ITPs/ # Force field parameter files (.itp)
-├── MDPs/ # GROMACS simulation parameter files (.mdp)
-├── scripts/ # Analysis pipelines (Jupyter/Python)
-├── LICENSE # MIT License
-└── README.md # Project overview
+├── System_Building_Strategy/             # Initial system construction protocols
+│ ├── 3xG4C2_12_17mMMaCl_10mMMgCl2_30mm/  # Sample system building case
+│ └── TPRs_3xG4C2_system/                 # All tpr files for all 3xG4C2 salt conditions
+├── ITPs/                                 # Force field parameter files (.itp)
+├── MDPs/                                 # GROMACS simulation parameter files (.mdp)
+├── scripts/                              # Analysis pipelines (Jupyter/Python)
+├── LICENSE                               # MIT License
+└── README.md                             # Project overview
 ```
 > **Detailed folder contents** are documented in each subfolder's README.md
 
