@@ -3,6 +3,7 @@
 This repository contains simulation protocols and analysis scripts for the study *"A glimpse of RNA phase separation under the Martini lens"*. All data follows FAIR principles (Findable, Accessible, Interoperable, Reusable).
 
 ## Repository Structure
+
 RNA-Phase-Separation-Martini-CG/
 ├── System_Building_Strategy/              # Initial system construction protocols
 │   └── 3xG4C2_12_17mMNacl_10mMMgcl2_30nm/  # Sample system building case
