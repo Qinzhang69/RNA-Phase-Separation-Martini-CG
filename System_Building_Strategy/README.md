@@ -54,10 +54,14 @@ gmx mdrun -v -deffnm md -nt 10 -pin on -pinstride 1 -pinoffset 0 -gpu_id 0
 Pre-built Simulation Inputs
 
 All production-ready systems are available in TPRs_3xG4C2_system/:
-File Name	                                |RNA Strands |Box Size	            |NaCl	 |MgCl₂
-A_3xG4C2_800uM_12_Na_neutral.tpr	        |12	         |30 nm x 30nm x 30nm   |0 mM	 |0 mM
-A_3xG4C2_800uM_12_17mMNaCl_10mMMgCl2.tpr	|12	         |30 nm x 30nm x 30nm   |17 mM	 |10 mM
-...	...	...	...	...
+
+| File Name | RNA Strands | Box Size (nm) | NaCl concentration (mM)| MgCl₂ concentration (mM) |
+|---------------|-----------|----------------------|-----------|----------------------|
+| `A_3xG4C2_800uM_12_Na_neutral.tpr` | 12 | 30 x 30 x 30 | 0 | 0 |
+| `A_3xG4C2_800uM_12_17mMNaCl_10mMMgCl2.tpr` | 12 | 30 x 30 x 30 | 17 | 10 |
+| ... (12 tprs total) | | |
+
+---
 
 > The revelant trajectories for all replicas are available on [Zenodo](https://zenodo.org/records/15608685)
 
