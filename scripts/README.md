@@ -3,10 +3,10 @@ Jupyter notebook scripts for data analysis and visualization, organized by manus
 
 | Notebook File | Generates | Analysis Description |
 |---------------|-----------|----------------------|
-| `Fig3b_figS3b_interchain_enrichment.ipynb` | Figure 3b & S3b | Inter-chain C-C/C-G/G-G contacts enrichment |
-| `Fig3a_figS3a_CC_CG_GG_interchain_contact.ipynb` | Figure S3a & S3a | Intra-chain C-C/C-G/G-G contacts |
-| `FigS1d_PO4-Mg_contact.ipynb` | Figure S1d | Phosphate group - Magnesium ion contacts |
-| `Fig2a_fig2b_Cluster_count.ipynb` | Figure 2a & 2b | Average cluster count analysis |
+| `Fig3b_figS4b_interchain_enrichment.ipynb` | Figure 3b & S4b | Inter-chain C-C/C-G/G-G contacts enrichment |
+| `Fig3a_figS4a_CC_CG_GG_interchain_contact.ipynb` | Figure 3a & S4a | Intra-chain C-C/C-G/G-G contacts |
+| `FigS2d_PO4-Mg_contact.ipynb` | Figure S2d | Phosphate group - Magnesium ion contacts |
+| `Fig2b_fig2c_Cluster_count.ipynb` | Figure 2b & 2c | Average cluster count analysis |
 | ... (12 notebooks total) | | |
 
 ---
