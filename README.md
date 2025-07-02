@@ -1,6 +1,6 @@
 # RNA Phase Separation - Martini Coarse-Grained Simulations
 
-This repository contains simulation protocols and analysis scripts for the study *"A glimpse of RNA phase separation under the Martini lens"*. All data follows FAIR principles (Findable, Accessible, Interoperable, Reusable).
+This repository contains simulation protocols and analysis scripts for the study *"RNA phase separation with Martini 3"*. All data follows FAIR principles (Findable, Accessible, Interoperable, Reusable).
 
 ## Repository Structure
 ```
@@ -21,7 +21,7 @@ If using this work, please cite our upcoming manuscript:
 
 ```bibtex
 @Article{RNAPhaseSep2025,
-  title = {A glimpse of RNA phase separation under the Martini lens},
+  title = {RNA phase separation with Martini 3},
   author = {Qin Zhang, Mariana Valério, Linus Grünewald, Luís Borges-Araújo, Fabian Grünewald, Shaomeng Wang, Siewert J. Marrink, Yubin Gong*, Paulo C. T. Souza*},
   journal = {J. Phys. Chem. Lett.},
   year = {2025},
